@@ -1,150 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Cashier Dashboard</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
-.container {
-  width: 100%;
-  display: flex;
-  margin-top: 20px;
-}
-
-.header {
-            background-color: #333;
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-}
-/* Sidebar */
-.sidebar {
-  width: 200px;
-  background-color: #333;
-  color: white;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 20px;
-}
-
-.sidebar a {
-  display: block;
-  color: white;
-  padding: 16px;
-  text-decoration: none;
-  text-align: left;
-}
-
-.sidebar a:hover {
-  background-color: #ddd;
-}
-
-/* Content Area */
-.content {
-  margin-left: 220px; /* Space for the sidebar */
-  padding: 20px;
-  width: calc(100% - 220px);
-}
-
-/* Table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  text-align: left;
-  padding: 8px;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-/* for quantity panel */
-.quantity-panel {
-            display: flex;
-            align-items: center;
-        }
-        .quantity-panel button {
-            width: 30px;
-            height: 30px;
-        }
-        .quantity-panel input {
-            width: 50px;
-            text-align: center;
-        }
-
-
-/* Logout button style */
-.logout-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #f44336; /* Red background for logout */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.logout-btn:hover{
-  background-color: #b42121; 
-}
-
-/* Hide sections initially */
-#orderSection, #tableSection, #takeOrderSection {
-  display: none;
-}
-
-form {
-  margin-top: 20px;
-}
-
-form input, form select, form button {
-  margin: 5px 0;
-  padding: 10px;
-  display: block;
-  width: 100%;
-  max-width: 400px;
-}
-</style>
-</head>
-<body>
-
-<div class="header">
-    <span>Welcome, <strong>Cashier</strong></span>
-    <!-- Logout Button -->
-    <a href="../process/logout.php">
-      <button class='logout-btn'>Logout</button>
-    </a>
-</div>
-<!-- Sidebar -->
-<div class="sidebar">
-    <h4><a href="#">Cashier Dashboard</a></h4>
-  <a href="#" onclick="showSection('orderSection')">Order</a>
-  <a href="#" onclick="showSection('tableSection')">Table Management</a>
-  <a href="#" onclick="showSection('takeOrderSection')">Take Order</a>
-</div>
-
+<?php include('dashboard.php'); ?>
 <!-- Content -->
 <div class="content">
 
@@ -187,6 +42,7 @@ form input, form select, form button {
       </tbody>
     </table>
   </div>
+
 
   <!-- Table Management Section -->
   <div id="tableSection">
@@ -266,47 +122,6 @@ form input, form select, form button {
   </div>
 
 </div>
-
-<script>
-// Function to toggle visibility of sections
-function showSection(sectionId) {
-  document.getElementById('orderSection').style.display = 'none';
-  document.getElementById('tableSection').style.display = 'none';
-  document.getElementById('takeOrderSection').style.display = 'none';
-  
-  // Show the selected section
-  document.getElementById(sectionId).style.display = 'block';
-}
-
-//order items and update
-const orderItems = document.getElementById('orderItems');
-        const totalPrice = document.getElementById('totalPrice');
-        const quantity = document.getElementById('quantity');
-        const increaseQty = document.getElementById('increaseQty');
-        const decreaseQty = document.getElementById('decreaseQty');
-
-        function updateTotalPrice() {
-            const selectedItem = orderItems.options[orderItems.selectedIndex];
-            const itemPrice = parseFloat(selectedItem.getAttribute('data-price'));
-            const qty = parseInt(quantity.value);
-            totalPrice.value = (itemPrice * qty).toFixed(2);
-        }
-
-        orderItems.addEventListener('change', updateTotalPrice);
-        quantity.addEventListener('input', updateTotalPrice);
-
-        increaseQty.addEventListener('click', () => {
-            quantity.value = parseInt(quantity.value) + 1;
-            updateTotalPrice();
-        });
-
-        decreaseQty.addEventListener('click', () => {
-            if (parseInt(quantity.value) > 1) {
-                quantity.value = parseInt(quantity.value) - 1;
-                updateTotalPrice();
-            }
-        });
-</script>
 
 </body>
 </html>

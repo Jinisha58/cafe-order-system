@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .header {
+              background-color: #333;
+              color: white;
+              padding: 25px 20px;
+              text-align: center;
+  }
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    text-align: left;
+  }
+  
+  .sidebar a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Content Area */
+  .content {
+    margin-left: 220px; /* Space for the sidebar */
+    padding: 20px;
+    width: calc(100% - 220px);
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* for quantity panel */
+  .quantity-panel {
+              display: flex;
+              align-items: center;
+          }
+          .quantity-panel button {
+              width: 30px;
+              height: 30px;
+          }
+          .quantity-panel input {
+              width: 50px;
+              text-align: center;
+          }
+  
+  
+  /* Logout button style */
+  .logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336; /* Red background for logout */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .logout-btn:hover{
+    background-color: #b42121; 
+  }
+  
+  /* Hide sections initially */
+  #orderSection, #tableSection, #takeOrderSection {
+    display: none;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  form input, form select, form button {
+    margin: 5px 0;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+  }
+  
