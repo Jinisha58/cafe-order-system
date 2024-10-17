@@ -84,6 +84,12 @@ fieldset{
 
 
 /* css for navbar section */
+.container .navbar {
+    background-color: #990000; /* Set your desired background color */
+}
+
+
+
 .logo{
     width: 5%;
     float: left;
@@ -119,71 +125,6 @@ fieldset{
         text-decoration: none;
         color: #000; /* Adjust text color as needed */
     }
-/* css for food search*/
-
-.food-search{
-    background-image: url(../images/bg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 7% 0;
-}
-
-.food-search input[type="search"]{
-    width: 50%;
-    padding: 1%;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-}
-
-
-/* css for categories */
-.categories{
-    padding: 4% 0;
-}
-
-.box-3{
-    width: 28%;
-    float: left;
-    margin: 2%;
-}
-
-/* css for food menu  */
-
-.drink-menu{
-    background-color: #ececec;
-    padding: 4%;
-}
-.drink-menu-box{
-    width: 43%;
-    margin: 1%;
-    padding: 2%;
-    float: left;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.drink-menu-img{
-    width: 20%;
-    float: left;
-}
-
-.drink-menu-desc{
-    width: 70%;
-    float: left;
-    margin-left: 8%;
-}
-
-.drink-price{
-    font-size: 1.2rem;
-    margin: 2% 0;
-}
-
-.drink-detail{
-    font-size: 1rem;
-    color: #747d8c;
-}
 
 /* css for social */
 
@@ -195,23 +136,6 @@ fieldset{
     padding: 1%;
 }
 
-/* for Order Section */
-.order{
-    width: 50%;
-    margin: 0 auto;
-}
-.input-responsive{
-    width: 96%;
-    padding: 1%;
-    margin-bottom: 3%;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-.order-label{
-    margin-bottom: 1%; 
-    font-weight: bold;
-}
 
 
 /* css for mobile size or smaller screen */
@@ -223,45 +147,7 @@ fieldset{
         margin: 1 auto;
     }
 
-    .menu ul{
-        text-align: center;
-    }
-
-    .food-search input[type="search"]{
-        width: 90%;
-        padding: 1%;
-        margin-bottom: 5%;
-    }
-
-    .btn{
-        width: 91%;
-        padding: 2%;
-    }
-    .food-search{
-        padding: 10% 0;
-    }
-
-    .categories{
-        padding: 20% 0;
-    }
-    h2{
-        margin-bottom: 10%;
-    }
-    .box-3{
-        width: 90%;
-        margin: 4% auto;
-    }
-
-    .drink-menu{
-        padding: 20% 0;
-    }
-
-    .drink-menu-box {
-        width: 90%;
-        padding: 5%;
-        margin-bottom: 5%;
-    }
-    .social{
+   .social{
         padding: 5% 0;
     }
 }

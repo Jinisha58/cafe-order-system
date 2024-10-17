@@ -1,106 +1,82 @@
-/* */
-
-*{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+ /* Internal CSS for styling */
+ body {
+    display: flex; /* Flexbox layout for sidebar and main content */
+    font-family: Arial, sans-serif; /* Font style */
+    background-color: #f8f9fa; /* Light background color */
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full height */
 }
-
-.wrapper{
-    padding: 1%;
-    width: 80%;
-    margin: 0 auto;
+.header {
+    background-color: #343a40; /* Header background color same as sidebar */
+    color: white; /* Header text color */
+    padding: 20px 20px; /* Padding for header */
+    text-align: center; /* Center align text */
+    position: fixed; /* Fixed position */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure header is above other content */
 }
-
-.text-center{
-    text-align: center;
-
+.header .logout-btn {
+    position: absolute; 
+    right: 20px; 
+    top: 15px; 
+    background-color: #dc3545; /* Logout button color */
+    color: white; 
+    border: none;  
+    padding: 8px 12px;
+    cursor: pointer; 
+    border-radius: 5px;
 }
-
-.clearfix{
-    float: none;
-    clear: both;   
+.sidebar {
+    background-color: #343a40; /* Dark sidebar color */
+    color: white; /* Sidebar text color */
+    width: 250px; /* Fixed width for sidebar */
+    height: 100vh; /* Full height */
+    padding: 20px; /* Padding for sidebar */
+    position: fixed; /* Fix sidebar position */
+    top: 60px; /* Align sidebar below header */
+    left: 0; /* Align sidebar to left */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
 }
-.tbl-full{
-    width: 100%;
+.sidebar h4 a {
+    color: white; /* Color for sidebar heading link */
+    text-decoration: none; /* Remove underline */
 }
-table tr th{
-    border-bottom: 1px solid black;
-    padding: 1%;
-    text-align: left;
+.sidebar a {
+    color: #ccc; /* Color for sidebar links */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Block display for links */
+    padding: 10px; /* Padding for links */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 5px; /* Margin between links */
 }
-
-table tr td{
-    padding: 1%;
+.sidebar a:hover {
+    background-color: #495057; /* Darker background on hover */
+    color: white; /* Change text color on hover */
 }
-
-.btn-primary{
-    background-color: #1e90ff;
-    padding: 1%;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.dropdown-menu {
+    background-color: #343a40; /* Match this with your sidebar color */
+    border: none; /* Remove border for cleaner look */
 }
-.btn-primary:hover{
-    background-color: #3742fa;
+.dropdown-item {
+    color: white; /* Change dropdown item color */
 }
-
-.btn-secondary{
-    background-color: #7bed9f;
-    padding: 1%;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
+.dropdown-item:hover {
+    background-color: #495057; /* Change hover color for dropdown items */
 }
-.btn-secondary:hover{
-    background-color: #2ed573;
+.main-content {
+    margin-left: 260px; /* Add margin for the sidebar */
+    padding: 20px; /* Padding for main content */
+    flex-grow: 1; /* Allow main content to grow */
+    margin-top: 60px; /* Space for header */
 }
-
-.btn-danger{
-    background-color: #ff6b81;
-    padding: 1%;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+/* Example styles for sections */
+.section {
+    background-color: white; /* White background for sections */
+    padding: 20px; /* Padding for sections */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    margin-bottom: 20px; /* Space between sections */
 }
-.btn-danger:hover{
-    background-color: #ff4757;
-}
-
-/* css for menu*/
-.menu{
-    border-bottom: 1px solid grey;
-}
-.menu ul{
-    list-style-type: none;
-}
-.menu ul li{
-    display: inline;
-    padding: 1%;
-}
-.menu ul li a{
-    text-decoration: none;
-    font-weight: bold;
-    color: #ff6b81;
-}
-.menu ul li a:hover{
-    color: #ff4757;
-}
-
-/*css for main content */
-.main-content{
-    background-color: #f1f2f6;
-    padding: 3% 0;
-}
-.col-4{
-    width: 18%;
-    background-color: white;
-    margin: 1%;
-    padding: 2%;
-    float: left;
-}
-/* css for footer */
-.footer{
-    background-color: #d94343;
-    color: white;
+.section h2 {
+    margin-bottom: 15px; /* Space below section title */
 }

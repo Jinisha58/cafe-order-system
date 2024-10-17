@@ -49,9 +49,21 @@ $result_menu = $conn->query($query_menu);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 10px;
         }
         .quantity-control {
-            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .quantity-control input {
+            width: 50px;
+            text-align: center;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .total-price {
+            margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -76,27 +88,37 @@ $result_menu = $conn->query($query_menu);
 
 <div id="order-form" style="display:none;">
     <h3>Order Form for Table <span id="table-id"></span></h3>
-    <form id="form" method="post" action="process_order.php">
+    <form id="form" method="post" action="process_order.php" onsubmit="return validateOrder()">
         <input type="hidden" name="table_id" id="hidden-table-id">
-        
+
         <label for="customer_name">Customer Name:</label>
         <input type="text" id="customer_name" name="customer_name" required>
-        
-        <label for="menu_items">Select Items and Quantities:</label>
-        <div id="menu_items">
-            <?php while ($menu_item = $result_menu->fetch_assoc()): ?>
-                <div class="menu-item">
-                    <span><?= htmlspecialchars($menu_item['item_name']) ?> - $<span class="item-price"><?= htmlspecialchars($menu_item['price']) ?></span></span>
-                    <div class="quantity-control">
-                        <button type="button" onclick="changeQuantity(<?= htmlspecialchars($menu_item['menu_id']) ?>, -1)">-</button>
-                        <input type="number" name="quantities[<?= htmlspecialchars($menu_item['menu_id']) ?>]" value="0" min="0" class="quantity" id="quantity-<?= htmlspecialchars($menu_item['menu_id']) ?>" onchange="updateTotalPrice()">
-                        <button type="button" onclick="changeQuantity(<?= htmlspecialchars($menu_item['menu_id']) ?>, 1)">+</button>
-                    </div>
-                </div>
-            <?php endwhile; ?>
-        </div>
 
-        <h4>Total Price: $<span id="total-price">0.00</span></h4>
+        <label for="menu_items">Select Items</label>
+        <div id="menu_items">
+    <?php while ($menu_item = $result_menu->fetch_assoc()): ?>
+        <div class="menu-item">
+            <span>
+                <?= htmlspecialchars($menu_item['item_name']) ?> - 
+                $<span class="item-price"><?= htmlspecialchars($menu_item['price']) ?></span>
+            </span>
+            <div class="quantity-control">
+                <button type="button" onclick="changeQuantity('<?= htmlspecialchars($menu_item['item_id']) ?>', -1)">-</button>
+                
+                <!-- Quantity Input -->
+                <input type="number" 
+                       name="quantities[<?= htmlspecialchars($menu_item['item_id']) ?>]" 
+                       value="0" min="0" class="quantity" 
+                       id="quantity-<?= htmlspecialchars($menu_item['item_id']) ?>" 
+                       onchange="updateTotalPrice()">
+
+                <button type="button" onclick="changeQuantity('<?= htmlspecialchars($menu_item['item_id']) ?>', 1)">+</button>
+            </div>
+        </div>
+    <?php endwhile; ?>
+</div>
+
+        <h4 class="total-price">Total Price: $<span id="total-price">0.00</span></h4>
 
         <input type="submit" value="Submit Order">
         <button type="button" onclick="closeOrderForm()">Cancel</button>
@@ -107,9 +129,11 @@ $result_menu = $conn->query($query_menu);
 // Function to change quantity
 function changeQuantity(itemId, delta) {
     let quantityInput = document.getElementById('quantity-' + itemId);
-    let currentQuantity = parseInt(quantityInput.value);
-    if (currentQuantity + delta >= 0) {
-        quantityInput.value = currentQuantity + delta;
+    let currentQuantity = parseInt(quantityInput.value) || 0; // Ensure it's a valid number
+    let newQuantity = currentQuantity + delta;
+
+    if (newQuantity >= 0) {
+        quantityInput.value = newQuantity;
         updateTotalPrice();
     }
 }
@@ -118,23 +142,40 @@ function changeQuantity(itemId, delta) {
 function updateTotalPrice() {
     let totalPrice = 0;
     let menuItems = document.querySelectorAll('.menu-item');
+    
     menuItems.forEach(function(item) {
         let price = parseFloat(item.querySelector('.item-price').innerText);
         let quantityInput = item.querySelector('.quantity');
-        let quantity = parseInt(quantityInput.value);
+        let quantity = parseInt(quantityInput.value) || 0;
+
         totalPrice += price * quantity;
     });
+
     document.getElementById('total-price').innerText = totalPrice.toFixed(2);
 }
 
+// Open the order form for a specific table
 function openOrderForm(tableId) {
     document.getElementById('order-form').style.display = 'block';
     document.getElementById('table-id').innerText = tableId;
     document.getElementById('hidden-table-id').value = tableId;
 }
 
+// Close the order form
 function closeOrderForm() {
     document.getElementById('order-form').style.display = 'none';
+}
+
+// Validate if at least one item with quantity > 0 is selected before submitting
+function validateOrder() {
+    let quantities = document.querySelectorAll('.quantity');
+    let isValid = Array.from(quantities).some(input => parseInt(input.value) > 0);
+
+    if (!isValid) {
+        alert('Please select at least one item with a quantity greater than zero.');
+        return false; // Block form submission
+    }
+    return true; // Allow form submission
 }
 </script>
 

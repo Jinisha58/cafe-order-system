@@ -1,155 +1,128 @@
 <?php include('partials-front/menu.php');  ?>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <!-- foodsearch section starts here -->
-    <section class="food-search text-center">
-        <div class="container">
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
 
-          <form action="food-search.php" method="post">
-            <input type="search" name="search" placeholder="Search for drinks..">
-            <input type="submit" name="submit" value="search" class="btn btn-primary">
-          </form>
+.text-center {
+    text-align: center;
+}
 
-        </div>
-    </section>
-    <!-- foodsearch section ends Here -->
+.item-slider {
+    position: relative;
+    width: 80%;
+    height: 600px; /* Full screen height */
+    max-width: 800px; /* Full width */
+    margin: auto;
+    overflow: hidden;
+}
 
-    <!-- categories section starts here -->
-    <section class="categories">                                                                                                            
-        <div class="container">
-            <h2 class="text-center">Explore Drinks & Foods</h2>
+.slider-container {
+    display: flex;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    transition: transform 0.5s ease-in-out;
+}
 
-            <a href="category-drinks.php">
-            <div class="box-3 float-container">
-                <img src="images/espresso2_half.jpg" alt="Hot Coffee" class="img-responsive img-curve">
+.slide {
+    width: 100%;
+    height: 100%; /* Make each slide take full screen height */
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+}
 
-                <h3 class="float-text text-white">Coffee</h3>
-            </div>
-            </a>
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: none; /* Ensures the image covers the container without distortion */
+    position: absolute;
+    top: 50%;             
+    left: 50%;            
+    transform: translate(-50%, -50%); /* Center the image */}
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/iced.jpeg" alt="Iced Coffee" class="img-responsive img-curve">
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
 
-                <h3 class="float-text text-white">Iced Coffee</h3>
-            </div>
-            </a>
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/juice2.jpeg" alt="Fresh Juice" class="img-responsive img-curve">
+.prev {
+    left: 10px;
+}
 
-                <h3 class="float-text text-white">Juice</h3>
-            </div>
-            </a>
+.next {
+    right: 10px;
+}
 
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <!-- categories section ends Here -->
+h3 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
 
-     <!-- food menu section starts here -->
-    <section class="drink-menu">
-        <div class="container">
-            <h2 class="text-center">Drink Menu</h2>
+    </style>
+</head>
+<body>
 
-            <div class="drink-menu-box">
-                <div class="drink-menu-img">
-                    <img src="images/menu-iced.jpg" alt="iced coffee" class="img-responsive img-curve">
-                </div>
+    <section class="item-slider text-center">
+        <div class="slider-container">
 
-                <div class="drink-menu-desc">
-                    <h4>Food title</h4>
-                    <p class="drink-price">$2.3</p>
-                    <p class="drink-detail">made with beans</p>
-                <br>
-
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="drink-menu-box">
-                <div class="drink-menu-img">
-                    <img src="images/pizza.jpg" alt="Hawaiian pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="drink-menu-desc">
-                    <h4>Pizza</h4>
-                    <p class="drink-price">$2.3</p>
-                    <p class="drink-detail">made with italian sauce, chicken, and organic vegetables.</p>
-                <br>
-
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-            <div class="drink-menu-box">
-                <div class="drink-menu-img">
-                    <img src="images/juice.jpg" alt="Juice" class="img-responsive img-curve">
-                </div>
-
-                <div class="drink-menu-desc">
-                    <h4>Juice</h4>
-                    <p class="drink-price">$2.3</p>
-                    <p class="drink-detail">made with fresh fruits</p>
-                <br>
-
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="drink-menu-box">
-                <div class="drink-menu-img">
-                    <img src="images/menu-iced.jpg" alt="iced coffee" class="img-responsive img-curve">
-                </div>
-
-                <div class="drink-menu-desc">
-                    <h4>iced coffee</h4>
-                    <p class="drink-price">$2.3</p>
-                    <p class="drink-detail">made with freshly brewed beans </p>
-                <br>
-
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="images/cake.jpeg" alt="Coffee" class="slider-image">
+                <h3>Coffee</h3>
             </div>
 
-            <div class="drink-menu-box">
-                <div class="drink-menu-img">
-                    <img src="images/momo.jpg" alt="chicken momo" class="img-responsive img-curve">
-                </div>
-
-                <div class="drink-menu-desc">
-                    <h4>Momo</h4>
-                    <p class="drink-price">$2.3</p>
-                    <p class="drink-detail">made with vegteables, chicken</p>
-                <br>
-
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="images/icedtea.jpg" alt="Tea" class="slider-image">
+                <h3>Tea</h3>
             </div>
 
-            <div class="drink-menu-box">
-                <div class="drink-menu-img">
-                    <img src="images/icedtea.jpg" alt="iced coffee" class="img-responsive img-curve">
-                </div>
-
-                <div class="drink-menu-desc">
-                    <h4>Iced Tea</h4>
-                    <p class="drink-price">$2.3</p>
-                    <p class="drink-detail">made with beans</p>
-                <br>
-
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="images/ice.jpg" alt="Cake" class="slider-image">
+                <h3>Cake</h3>
             </div>
 
-
-            <div class="clearfix"></div>
+            <!-- Slide 4 -->
+            <div class="slide">
+                <img src="images/juice.jpg" alt="Smoothie" class="slider-image">
+                <h3>Smoothie</h3>
+            </div>
 
         </div>
 
-        <p class="text-center">
-            <a href="#">See All Drinks</a>
-        </p>
-    </section>
-    <!-- foodm menu section ends Here -->
+        <!-- Navigation Buttons -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
 
-   <?php include('partials-front/footer.php'); ?>
+    </section>
+
+</body>
+</html>
+
+ <?php include('partials-front/footer.php'); ?>

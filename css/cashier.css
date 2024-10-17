@@ -1,124 +1,63 @@
+/* cashier.css */
+
+/* Body layout */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    width: 100%;
-    display: flex;
-    margin-top: 20px;
-  }
-  
-  .header {
-              background-color: #333;
-              color: white;
-              padding: 25px 20px;
-              text-align: center;
-  }
-  /* Sidebar */
-  .sidebar {
-    width: 200px;
-    background-color: #333;
-    color: white;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
-  }
-  
-  .sidebar a {
-    display: block;
-    color: white;
-    padding: 16px;
-    text-decoration: none;
-    text-align: left;
-  }
-  
-  .sidebar a:hover {
-    background-color: #ddd;
-  }
-  
-  /* Content Area */
-  .content {
-    margin-left: 220px; /* Space for the sidebar */
-    padding: 20px;
-    width: calc(100% - 220px);
-  }
-  
-  /* Table styling */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    text-align: left;
-    padding: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  .button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  /* for quantity panel */
-  .quantity-panel {
-              display: flex;
-              align-items: center;
-          }
-          .quantity-panel button {
-              width: 30px;
-              height: 30px;
-          }
-          .quantity-panel input {
-              width: 50px;
-              text-align: center;
-          }
-  
-  
-  /* Logout button style */
-  .logout-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #f44336; /* Red background for logout */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .logout-btn:hover{
-    background-color: #b42121; 
-  }
-  
-  /* Hide sections initially */
-  #orderSection, #tableSection, #takeOrderSection {
-    display: none;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  form input, form select, form button {
-    margin: 5px 0;
-    padding: 10px;
-    display: block;
-    width: 100%;
-    max-width: 400px;
-  }
-  
+  display: flex; /* Flexbox layout for sidebar and main content */
+  font-family: Arial, sans-serif; /* Font style */
+  background-color: #f8f9fa; /* Light background color */
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Full height */
+}
+
+.header {
+  background-color: #343a40; /* Header background color */
+  color: white; /* Header text color */
+  padding: 15px 20px; /* Padding for header */
+  text-align: center; /* Center align text */
+  position: fixed; /* Fixed position */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure header is above other content */
+}
+
+.header .logout-btn {
+  position: absolute; /* Position absolute for placement */
+  right: 20px; /* Align to right */
+  top: 15px; /* Align to top */
+  background-color: #dc3545; /* Logout button color */
+  color: white; /* Logout button text color */
+  border: none; /* Remove border */
+  padding: 8px 12px; /* Padding for button */
+  cursor: pointer; /* Cursor change on hover */
+  border-radius: 5px; /* Rounded edges for the button */
+}
+
+.sidebar {
+  background-color: #343a40; /* Dark sidebar color */
+  color: white; /* Sidebar text color */
+  width: 250px; /* Fixed width for sidebar */
+  height: 100vh; /* Full height */
+  padding: 20px; /* Padding for sidebar */
+  position: fixed; /* Fix sidebar position */
+  top: 60px; /* Align sidebar below header */
+  left: 0; /* Align sidebar to left */
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+}
+
+.main-content {
+  margin-left: 260px; /* Add margin for the sidebar */
+  padding: 20px; /* Padding for main content */
+  flex-grow: 1; /* Allow main content to grow */
+  margin-top: 60px; /* Space for header */
+}
+
+.section {
+  background-color: white; /* White background for sections */
+  padding: 20px; /* Padding for sections */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+  margin-bottom: 20px; /* Space between sections */
+}
+
+.section h2 {
+  margin-bottom: 15px; /* Space below section title */
+}
